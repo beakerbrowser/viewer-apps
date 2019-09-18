@@ -1,0 +1,19 @@
+{
+  "name": "@beaker/viewer-apps",
+  "version": "1.0.0",
+  "description": "Beaker's builtin hyperdrive-viewer applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beakerbrowser/viewer-apps.git"
+  },
+  "author": "Paul Frazee <pfrazee@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beakerbrowser/viewer-apps/issues"
+  },
+  "homepage": "https://github.com/beakerbrowser/viewer-apps#readme"
+}
