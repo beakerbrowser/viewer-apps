@@ -1,6 +1,6 @@
 {
   "name": "@beaker/viewer-apps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beaker's builtin hyperdrive-viewer applications",
   "main": "index.js",
   "scripts": {
