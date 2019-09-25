@@ -26,7 +26,7 @@ export class BookmarksView extends LitElement {
   async load () {
     if (!this.user) return
 
-    var items = await UwG.bookmarks.list({
+    var items = await uwg.bookmarks.list({
       author: [this.info.key],
       sortBy: 'createdAt',
       reverse: true

@@ -32,15 +32,15 @@ export class SocialGraphView extends LitElement {
 
     // fetch listing
     var items
-    var urlsOfUsersFollowedByLocal = (await UwG.follows.list({author: this.user.url})).map(({topic}) => topic.url)
+    var urlsOfUsersFollowedByLocal = (await uwg.follows.list({author: this.user.url})).map(({topic}) => topic.url)
     var urlsOfMyNetwork = [this.user.url].concat(urlsOfUsersFollowedByLocal)
     if (this.currentSubview === 'followers') {
-      items = (await UwG.follows.list({topic: this.info.key, author: urlsOfMyNetwork})).map(({author}) => author)
+      items = (await uwg.follows.list({topic: this.info.key, author: urlsOfMyNetwork})).map(({author}) => author)
     } else {
-      items = (await UwG.follows.list({author: this.info.key})).map(({topic}) => topic)
+      items = (await uwg.follows.list({author: this.info.key})).map(({topic}) => topic)
     }
     await Promise.all(items.map(async (item) => {
-      item.followers = (await UwG.follows.list({topic: item.url, author: urlsOfMyNetwork})).map(({author}) => author)
+      item.followers = (await uwg.follows.list({topic: item.url, author: urlsOfMyNetwork})).map(({author}) => author)
       item.isLocalUser = this.user.url === item.url
       item.isLocalUserFollowing = !!item.followers.find(f => f.url === this.user.url)
     }))
@@ -122,9 +122,9 @@ export class SocialGraphView extends LitElement {
 
   async onToggleFollow (e, item) {
     if (item.isLocalUserFollowing) {
-      await UwG.follows.remove(item.url)
+      await uwg.follows.remove(item.url)
     } else {
-      await UwG.follows.add(item.url)
+      await uwg.follows.add(item.url)
     }
     this.load()
   }

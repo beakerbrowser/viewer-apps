@@ -30,12 +30,13 @@ export class PersonViewer extends LitElement {
 
   async load () {
     if (!this.user) {
-      this.user = await UwG.profiles.me()
+      this.user = await uwg.profiles.me()
+      await uwg.profiles.index(location.toString())
     }
     var archive = new DatArchive(location)
     this.info = await archive.getInfo()
-    this.libraryEntry = (await UwG.library.list({key: this.info.key, isSaved: true}))[0]
-    this.isUserFollowing = !!(await UwG.follows.get(this.user.url, this.info.url))
+    this.libraryEntry = (await uwg.library.list({key: this.info.key, isSaved: true}))[0]
+    this.isUserFollowing = !!(await uwg.follows.get(this.user.url, this.info.url))
     
     await this.requestUpdate()
     try {
@@ -168,24 +169,24 @@ export class PersonViewer extends LitElement {
   }
 
   async onEditProfile (e) {
-    await UwG.profiles.editProfileDialog(this.info.url)
+    await uwg.profiles.editProfileDialog(this.info.url)
     this.load()
   }
 
   async onToggleFollowing (e) {
     if (this.isUserFollowing) {
-      await UwG.follows.remove(this.info.url)
+      await uwg.follows.remove(this.info.url)
     } else {
-      await UwG.follows.add(this.info.url)
+      await uwg.follows.add(this.info.url)
     }
     this.load()
   }
 
   async onToggleSaved (e) {
     if (this.libraryEntry) {
-      await UwG.library.configure(this.info.url, {isSaved: false})
+      await uwg.library.configure(this.info.url, {isSaved: false})
     } else {
-      await UwG.library.configure(this.info.url, {isSaved: true})
+      await uwg.library.configure(this.info.url, {isSaved: true})
     }
     this.load()
   }

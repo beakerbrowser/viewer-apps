@@ -28,7 +28,7 @@ export class DatsView extends LitElement {
   async load () {
     if (!this.info) return
     // fetch listing
-    var items = await UwG.library.list({
+    var items = await uwg.library.list({
       type: 'unwalled.garden/website',
       author: `dat://${this.info.key}`,
       sortBy: 'mtime'
@@ -95,13 +95,13 @@ export class DatsView extends LitElement {
     items.push('-')
     if (item.isSaved) {
       items.push({icon: 'fas fa-trash', label: 'Move to trash', click: async () => {
-        await UwG.library.configure(item.key, {isSaved: false})
+        await uwg.library.configure(item.key, {isSaved: false})
         toast.create('Moved to trash')
         this.load()
       }})
     } else {
       items.push({icon: 'fas fa-undo', label: 'Save to my library', click: async () => {
-        await UwG.library.configure(item.key, {isSaved: true})
+        await uwg.library.configure(item.key, {isSaved: true})
         toast.create('Restored')
         this.load()
       }})
