@@ -55,10 +55,10 @@ export class BookmarksView extends LitElement {
 
   renderItem (item) {
     return html`
-      <a class="bookmark" href=${item.href}>
-        <span class="favicon"><img src="asset:favicon:${item.href}"></span>
-        <span class="title">${item.title}</span>
-      </a>
+      <div class="bookmark">
+        <div class="title"><a href=${item.href}">${item.title}</a></div>
+        <div class="description">${item.description}</div>
+      </div>
     `
   }
 

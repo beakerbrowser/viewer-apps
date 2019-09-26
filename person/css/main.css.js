@@ -11,7 +11,7 @@ ${tooltipCSS}
 ${labelCSS  }
 
 .banner {
-  background: linear-gradient(to top, #eaeaea, #fff);
+  background: linear-gradient(to top, #eaeaed, #fff);
 }
 
 .banner-inner {
@@ -81,10 +81,15 @@ person-viewer-nav {
 }
 
 beaker-status-feed,
+status-view,
 social-graph-view,
 bookmarks-view,
 dats-view {
   width: 540px;
+}
+
+raw-file-view {
+  width: 750px;
 }
 `
 export default cssStr

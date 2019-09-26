@@ -87,7 +87,15 @@ export class SocialGraphView extends LitElement {
           <img src="asset:thumb:${item.url}?cache_buster=${Date.now()}">
         </a>
         <div class="details">
-          <div class="title"><a href=${item.url}>${item.title}</a></div>
+          <div class="title">
+            <a href=${item.url}>${item.title}</a>
+            ${!item.isLocalUser ? html`
+              <button @click=${e => this.onToggleFollow(e, item)}>
+                <span class="fas fa-fw fa-${item.isLocalUserFollowing ? 'check' : 'rss'}"></span>
+                ${item.isLocalUserFollowing ? 'Following' : 'Follow'}
+              </button>
+            ` : ''}
+          </div>
           <div class="description">
             ${item.isLocalUser
                 ? html`<span class="label">This is me</span>`
@@ -95,12 +103,6 @@ export class SocialGraphView extends LitElement {
             ${item.description}
           </div>
           <div class="bottom-line">
-            ${!item.isLocalUser ? html`
-              <button @click=${e => this.onToggleFollow(e, item)}>
-                <span class="fas fa-fw fa-${item.isLocalUserFollowing ? 'check' : 'rss'}"></span>
-                ${item.isLocalUserFollowing ? 'Following' : 'Follow'}
-              </button>
-            ` : ''}
             <span class="followers">
               <span class="far fa-fw fa-user"></span>
               Followed by

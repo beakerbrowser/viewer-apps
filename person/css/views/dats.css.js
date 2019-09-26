@@ -30,7 +30,6 @@ a:hover {
 
 .item {
   display: flex;
-  align-items: center;
   margin: 0 0 5px;
   padding: 12px 12px;
   border: 1px solid #ccc;
@@ -45,9 +44,10 @@ a:hover {
 
 .item .thumb img {
   display: block;
-  width: 100px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 4px;
+  object-fit: cover;
 }
 
 .item .title {

@@ -42,7 +42,7 @@ class Nav extends LitElement {
       ${item('statuses', 'far fa-comment-alt', 'Status Updates')}
       ${item('social-graph', 'far fa-user', 'Social Graph')}
       ${item('bookmarks', 'far fa-star', 'Bookmarks')}
-      ${item('websites', 'far fa-file-alt', 'Websites')}
+      ${item('dats', 'far fa-folder', 'Dat Library')}
     `
   }
 

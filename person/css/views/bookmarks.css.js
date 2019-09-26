@@ -17,49 +17,26 @@ ${buttonsCSS}
   color: gray;
 }
 
-.bookmark {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  color: #555;
-  user-select: none;
+a {
+  color: var(--blue);
   text-decoration: none;
-  border-bottom: 1px solid #ddd;
 }
 
-.bookmark:first-child {
-  border-top: 1px solid #ddd;
+a:hover {
+  text-decoration: underline;
 }
 
-.bookmark:hover {
-  background: #f5f5f5;
-}
-
-.bookmark > * {
-  margin-right: 8px;
-  white-space: nowrap;
-}
-
-.bookmark .href,
-.bookmark .description,
-.bookmark .tags {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.bookmark .favicon img {
-  display: block;
-  width: 16px;
-  height: 16px;
-  object-fit: cover;
+.bookmark {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .bookmark .title {
-  font-weight: 500;
-}
-
-.bookmark .href {
-  color: var(--blue);
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 `
 export default cssStr

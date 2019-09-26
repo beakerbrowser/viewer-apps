@@ -46,17 +46,16 @@ nav a {
 }
 
 nav a:hover {
-  background: #eee;
+  background: #eeeef3;
   text-decoration: none;
 }
 
 nav a.current {
-  background: #eee;
+  background: #eeeef3;
 }
 
 .item {
   display: flex;
-  align-items: center;
   margin: 0 0 5px;
   padding: 12px 15px;
   border: 1px solid #ccc;
@@ -71,20 +70,27 @@ nav a.current {
 
 .item .thumb img {
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 2px rgba(0,0,0,.15);
 }
 
 .item .details {
-
+  flex: 1;
 }
 
 .item .title {
-  font-size: 18px;
   margin-bottom: 4px;
+}
+
+.item .title a {
+  font-size: 18px;
+}
+
+.item .title button {
+  float: right;
 }
 
 .item .description {
@@ -104,6 +110,10 @@ nav a.current {
 .item .followers {
   font-size: 11px;
   color: gray;
+}
+
+.item .followers a {
+  color: inherit;
 }
 
 `

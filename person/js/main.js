@@ -6,6 +6,10 @@ import '../../vendor/beaker-app-stdlib/js/com/status/feed.js'
 import './views/social-graph.js'
 import './views/bookmarks.js'
 import './views/dats.js'
+import './views/status.js'
+import './views/raw-file.js'
+
+const STATUS_PATHNAME_RE = /^\/\.data\/statuses\/(.*\.json)$/i
 
 export class PersonViewer extends LitElement {
   static get properties() {
@@ -22,10 +26,21 @@ export class PersonViewer extends LitElement {
 
   constructor () {
     super()
-    this.currentView = QP.getParam('view', 'statuses')
+    this.currentView = undefined
     this.user = undefined
     this.info = undefined
+    this.parseLocation()
     this.load()
+  }
+
+  parseLocation () {
+    if (STATUS_PATHNAME_RE.test(location.pathname)) {
+      this.currentView = 'status'
+    } else if (location.pathname === '/') {
+      this.currentView = QP.getParam('view', 'statuses')
+    } else {
+      this.currentView = 'unknown'
+    }
   }
 
   async load () {
@@ -140,7 +155,7 @@ export class PersonViewer extends LitElement {
             .info=${this.info}
           ></social-graph-view>
         `
-      case 'websites':
+      case 'dats':
         return html`
           <dats-view
             the-current-view
@@ -148,13 +163,29 @@ export class PersonViewer extends LitElement {
             .info=${this.info}
           ></dats-view>
         `
-      default:
+      case 'status':
+        return html`
+          <status-view
+            the-current-view
+            .user=${this.user}
+            .info=${this.info}
+          ></status-view>
+        `
+      case 'statuses':
         return html`
           <beaker-status-feed
             the-current-view
             .user=${this.user}
             author=${window.location.origin}
           ></beaker-status-feed>
+        `
+      default:
+        return html`
+          <raw-file-view
+            the-current-view
+            .user=${this.user}
+            author=${window.location.origin}
+          ></raw-file-view>
         `
     }
   }
@@ -163,6 +194,10 @@ export class PersonViewer extends LitElement {
   // =
 
   onChangeView (e) {
+    if (window.location.pathname !== '/') {
+      window.location = '/?view=' + e.detail.view
+      return
+    }
     this.currentView = e.detail.view
     QP.setParams({view: this.currentView})
     this.load()
