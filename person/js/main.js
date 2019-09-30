@@ -115,7 +115,7 @@ export class PersonViewer extends LitElement {
 
   renderFollowBtn () {
     return html`
-      <button class="big" @click=${this.onToggleFollowing}>
+      <button class="big ${this.isUserFollowing ? 'primary' : ''}" @click=${this.onToggleFollowing}>
         ${this.isUserFollowing ? html`
           <span class="fas fa-fw fa-check"></span> Following
         ` : html`
@@ -126,9 +126,10 @@ export class PersonViewer extends LitElement {
   }
 
   renderSaveBtn () {
+    const isSaved = !!this.libraryEntry
     return html`
-      <button class="big" @click=${this.onToggleSaved}>
-        ${!!this.libraryEntry ? html`
+      <button class="big ${isSaved ? 'primary' : ''}" @click=${this.onToggleSaved}>
+        ${isSaved ? html`
           <span class="fas fa-fw fa-save"></span> Saved
         ` : html`
           <span class="fas fa-fw fa-save"></span> Save

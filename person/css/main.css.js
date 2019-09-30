@@ -51,10 +51,6 @@ ${labelCSS  }
   margin-right: 5px;
 }
 
-.banner .btn-group button {
-  border-color: #bbb;
-}
-
 .toolbar {
   background: #fff;
   margin-bottom: 10px;

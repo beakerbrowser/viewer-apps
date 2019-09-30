@@ -12,8 +12,11 @@ h3 {
 pre {
   max-width: 100%;
   overflow: auto;
-  border: 1px solid #ddd;
-  padding: 10px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  padding: 10px 12px;
+  background: #f5f5fa;
+  border-radius: 4px;
 }
 
 img,
