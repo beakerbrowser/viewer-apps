@@ -26,9 +26,11 @@ file-display {
 @media (max-width: 800px) {
   :host {
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
+  folder-info,
   file-info {
-    display: none;
+    grid-row: 1;
   }
 }
 `
